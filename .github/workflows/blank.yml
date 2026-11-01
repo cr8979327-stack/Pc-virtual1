@@ -1,0 +1,27 @@
+
+name: PC Virtual Windows 10
+
+on:
+  workflow_dispatch:
+
+jobs:
+  pc-virtual:
+    name: Iniciar PC Virtual
+    runs-on: windows-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Informações do sistema
+        shell: powershell
+        run: |
+          Write-Host "PC Virtual iniciado!"
+          Write-Host "Sistema:"
+          Get-ComputerInfo |
+            Select-Object WindowsProductName, WindowsVersion
+
+      - name: Manter execução ativa
+        shell: powershell
+        run: |
+          Write-Host "PC Virtual está ligado."
+          Start-Sleep -Seconds 21600
+          XFCE"
